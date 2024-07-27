@@ -55,11 +55,11 @@ public class BasicController {
                 Map.class);
 
         // 응답 상태 코드와 본문 출력
-        if (response.getStatusCode() == HttpStatus.OK) {
-            System.out.println("Response Body: " + response.getBody());
-        } else {
-            System.out.println("Error: " + response.getStatusCode());
-        }
+        // if (response.getStatusCode() == HttpStatus.OK) {
+        //     System.out.println("Response Body: " + response.getBody());
+        // } else {
+        //     System.out.println("Error: " + response.getStatusCode());
+        // }
 
         return response;
     }
