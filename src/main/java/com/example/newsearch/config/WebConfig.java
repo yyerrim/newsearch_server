@@ -11,8 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://main--newsearchsite.netlify.app")
+                .allowedOrigins("https://main--newsearchsite.netlify.app") // Netlify 배포 URL
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowCredentials(true);
+                .allowCredentials(true)
+                .allowedHeaders("*");
     }
 }

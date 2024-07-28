@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/update-visitor-count")
-@CrossOrigin
 public class VisitorCounterController {
     @Autowired
     private VisitorCounterService service;

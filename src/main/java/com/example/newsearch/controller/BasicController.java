@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@CrossOrigin
 public class BasicController {
 
     private final String naverClientId;
@@ -24,7 +23,7 @@ public class BasicController {
 
     @Autowired
     public BasicController(@Qualifier("naverClientId") String naverClientId,
-            @Qualifier("naverClientSecret") String naverClientSecret) {
+                           @Qualifier("naverClientSecret") String naverClientSecret) {
         this.naverClientId = naverClientId;
         this.naverClientSecret = naverClientSecret;
     }
