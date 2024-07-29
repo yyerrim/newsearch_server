@@ -49,6 +49,9 @@ public class BasicController {
                 HttpMethod.GET,
                 entity,
                 Map.class);
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getHeaders().entrySet());
+        System.out.println(response.getBody());
 
         return response;
     }
