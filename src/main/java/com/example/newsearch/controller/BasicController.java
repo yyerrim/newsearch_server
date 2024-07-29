@@ -30,7 +30,7 @@ public class BasicController {
     }
 
     @GetMapping("/naver/data")
-    public ResponseEntity<Map> naverData(@RequestParam String search) {
+    public Map naverData(@RequestParam String search) {
 
         // 요청 헤더 설정
         HttpHeaders headers = new HttpHeaders();
@@ -53,6 +53,6 @@ public class BasicController {
         System.out.println(response.getHeaders().entrySet());
         System.out.println(response.getBody());
 
-        return response;
+        return response.getBody();
     }
 }
