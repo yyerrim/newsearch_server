@@ -1,39 +1,36 @@
 package com.example.newsearch.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @RestController
 public class BasicController {
 
     private final String naverClientId;
     private final String naverClientSecret;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public BasicController(@Qualifier("naverClientId") String naverClientId,
-                           @Qualifier("naverClientSecret") String naverClientSecret) {
+                           @Qualifier("naverClientSecret") String naverClientSecret,
+                           RestTemplate restTemplate) {
         this.naverClientId = naverClientId;
         this.naverClientSecret = naverClientSecret;
+        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/naver/data")
-    public ResponseEntity<Map> naverData(
-            @RequestParam(defaultValue = "") String search) {
-
-        // RestTemplate 객체 생성
-        RestTemplate restTemplate = new RestTemplate();
+    public ResponseEntity<Map> naverData(@RequestParam String search) {
 
         // 요청 헤더 설정
         HttpHeaders headers = new HttpHeaders();
@@ -53,14 +50,6 @@ public class BasicController {
                 entity,
                 Map.class);
 
-        // 응답 상태 코드와 본문 출력
-        // if (response.getStatusCode() == HttpStatus.OK) {
-        //     System.out.println("Response Body: " + response.getBody());
-        // } else {
-        //     System.out.println("Error: " + response.getStatusCode());
-        // }
-
         return response;
     }
-
 }
